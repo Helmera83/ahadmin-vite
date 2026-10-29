@@ -198,10 +198,21 @@ body {
   margin: 1.5rem 0 2rem;
 }
 
+.lp-hero-focus {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+}
 .lp-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.lp-list-item {
+  text-decoration: none;
 }
 
 .lp-hero .lp-btn.ghost {
@@ -237,10 +248,10 @@ body {
 }
 
 .lp-dash-glass-card {
-  background: rgba(16, 34, 63, 0.72);
+  background: rgba(23, 27, 32, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px soid var(--mint);
   border-radius: 18px;
   padding: 1.85rem;
   box-shadow: 
@@ -1264,14 +1275,23 @@ body {
 
 .lp-close .lp-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 3rem;
   flex-wrap: wrap;
 }
 
 .lp-close-content {
-  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.lp-close-content-col{
+  max-width: 25rem;
+  justify-content: flex-start;
+  gap: 1rem;
+
 }
 
 .lp-close-eyebrow {

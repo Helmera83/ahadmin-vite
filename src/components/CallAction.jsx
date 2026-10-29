@@ -5,6 +5,7 @@ export default function CTA() {
     return (<section className="lp-sec lp-close" id="contact">
           <div className="lp-wrap">
             <div className="lp-close-content">
+              <div className="lp-close-content-col">
               <span className="lp-close-eyebrow">Ready to reclaim your time?</span>
               <h2>Hand off the tasks you keep putting off.</h2>
               <p className="lp-close-sub">
@@ -18,6 +19,9 @@ export default function CTA() {
               <a href="mailto:operations@ahadmin.com" className="lp-btn ghost">
                 Ask a quick question
               </a>
+              </div>
+              <div className="lp-close-content-col">
+              </div>
             </div>
           </div>
         </section>
