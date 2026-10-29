@@ -122,7 +122,6 @@ const services = [
     name: 'Digital & Email Marketing',
     badge: 'Google Certified',
     icon: Megaphone,
-    tagline: 'Keep past, present, and prospective clients engaged automatically.',
     description: 'Drafting regular email newsletters, maintaining clean subscriber segments, running campaign pre-flight link checks, and reporting engagement metrics.',
     deliverables: [
       'Formatting and proofreading newsletter broadcasts',
@@ -179,7 +178,6 @@ export default function ServicesFlipSection() {
                 </div>
 
                 <h3 className="lp-flip-title">{svc.name}</h3>
-                <p className="lp-flip-tagline">{svc.tagline}</p>
 
                 <div className="lp-flip-deliverables-wrap">
                   <span className="lp-card-label">Core Deliverables</span>

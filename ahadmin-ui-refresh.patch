@@ -1,0 +1,878 @@
+diff --git a/package.json b/package.json
+index 5e96dcb..2aee95a 100644
+--- a/package.json
++++ b/package.json
+@@ -17,7 +17,7 @@
+     "react-router-dom": "^7.18.5"
+   },
+   "devDependencies": {
+-    "@vitejs/plugin-react": "^4.3.2",
++    "@vitejs/plugin-react": "^6.1.2",
+     "vite": "^8.3.5"
+   }
+ }
+diff --git a/src/components/CallAction.jsx b/src/components/CallAction.jsx
+index cfa172a..5f40634 100644
+--- a/src/components/CallAction.jsx
++++ b/src/components/CallAction.jsx
+@@ -2,29 +2,27 @@ import { Link } from 'react-router-dom';
+ import { ArrowRight } from 'lucide-react';
+ 
+ export default function CTA() {
+-    return (<section className="lp-sec lp-close" id="contact">
+-          <div className="lp-wrap">
+-            <div className="lp-close-content">
+-              <div className="lp-close-content-col">
+-              <span className="lp-close-eyebrow">Ready to reclaim your time?</span>
+-              <h2>Hand off the tasks you keep putting off.</h2>
+-              <p className="lp-close-sub">
+-                Whether you need invoicing reconciled, an inbox brought under control, or a full optimization review—let's get your operations running smoothly.
+-              </p>
+-            </div>
+-            <div className="lp-close-actions">
+-              <Link to="/intake" className="lp-btn">
+-                Book a consultation <ArrowRight size={18} />
+-              </Link>
+-              <a href="mailto:operations@ahadmin.com" className="lp-btn ghost">
+-                Ask a quick question
+-              </a>
+-              </div>
+-              <div className="lp-close-content-col">
+-              </div>
+-            </div>
++  return (
++    <section className="lp-sec lp-close" id="contact">
++      <div className="lp-wrap">
++        <div className="lp-close-content">
++          <div className="lp-close-content-col">
++            <span className="lp-close-eyebrow">Ready to reclaim your time?</span>
++            <h2>Hand off the tasks you keep putting off.</h2>
++            <p className="lp-close-sub">
++              Whether you need invoicing reconciled, an inbox brought under control, or a full optimization review—let's get your operations running smoothly.
++            </p>
+           </div>
+-        </section>
+-    
+-    );
+-  }
+\ No newline at end of file
++          <div className="lp-close-actions">
++            <Link to="/intake" className="lp-btn">
++              Book a consultation <ArrowRight size={18} />
++            </Link>
++            <a href="mailto:operations@ahadmin.com" className="lp-btn ghost">
++              Ask a quick question
++            </a>
++          </div>
++        </div>
++      </div>
++    </section>
++  );
++}
+diff --git a/src/components/Hero.jsx b/src/components/Hero.jsx
+index 7603d1f..7afc53f 100644
+--- a/src/components/Hero.jsx
++++ b/src/components/Hero.jsx
+@@ -1,5 +1,5 @@
+ import { Link } from 'react-router-dom';
+-import { ArrowRight, Clock, ShieldCheck, Zap, Sparkles, CheckCircle2, CheckIcon } from 'lucide-react';
++import { ArrowRight, Clock, ShieldCheck, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
+ import CountUp from './CountUp.jsx';
+ 
+ const stats = [
+@@ -38,14 +38,13 @@ export default function Hero() {
+                 <div className="lp-hero-copy">
+                     <div className="lp-hero-pill">
+                         <Sparkles size={14} className="lp-hero-spark" />
+-                        <span> administration heavy lifting </span>
++                        <span>Bookkeeping · Automations · Scheduling</span>
+                     </div>
+                     <h1>Dedicated Virtual Assistant for Small Business Owners</h1>
+                     <p className="lead">
+-                        <div>
+-                             Let us handle the administrative heavy lifting; <br />
+-                            <strong>so you can focus on growing your business.</strong>
+-                        </div>
++                        Let us handle the administrative heavy lifting,
++                        <br />
++                        <strong>so you can focus on growing your business.</strong>
+                     </p>
+                     <div className="lp-actions">
+                         <Link to="/intake" className="lp-btn">
+@@ -110,6 +109,7 @@ export default function Hero() {
+                                 </div>
+                             ))}
+                         </div>
++                        <p className="lp-dash-note">Illustrative example of a typical retainer.</p>
+                     </div>
+                 </div>
+             </div>
+diff --git a/src/components/HowItWorks.jsx b/src/components/HowItWorks.jsx
+new file mode 100644
+index 0000000..1190f80
+--- /dev/null
++++ b/src/components/HowItWorks.jsx
+@@ -0,0 +1,35 @@
++const steps = [
++  {
++    title: 'Tell me what is piling up',
++    body: 'Send a short request describing the tasks that keep slipping. I reply by email within one business day.',
++  },
++  {
++    title: 'We run a workflow review',
++    body: 'We walk through your invoicing, inbox, scheduling, and client records, then pick the plan that fits.',
++  },
++  {
++    title: 'Hand it off and get your time back',
++    body: 'I take the recurring work on, and you get a steady, predictable operation to build on.',
++  },
++];
++
++export default function HowItWorks() {
++  return (
++    <section className="lp-sec lp-how" id="how">
++      <div className="lp-wrap">
++        <div className="lp-how-head">
++          <span className="lp-how-eyebrow">How it works</span>
++          <h2>Three steps from overwhelmed to handled.</h2>
++        </div>
++        <ol className="lp-how-steps">
++          {steps.map((s) => (
++            <li key={s.title}>
++              <h3>{s.title}</h3>
++              <p>{s.body}</p>
++            </li>
++          ))}
++        </ol>
++      </div>
++    </section>
++  );
++}
+diff --git a/src/components/PricingGrid.jsx b/src/components/PricingGrid.jsx
+index dc2bf51..28a4be5 100644
+--- a/src/components/PricingGrid.jsx
++++ b/src/components/PricingGrid.jsx
+@@ -156,6 +156,15 @@ export default function PricingGrid() {
+                 <span>{section.category}</span>
+               </div>
+ 
++              <div className="lp-matrix-head" aria-hidden="true">
++                <span />
++                <div className="lp-matrix-head-plans">
++                  {plans.map((p) => (
++                    <span key={p.id} className={p.popular ? 'is-popular' : ''}>{p.name}</span>
++                  ))}
++                </div>
++              </div>
++
+               <div className="lp-matrix-table">
+                 {section.rows.map((row) => (
+                   <div key={row.feature} className="lp-matrix-row">
+@@ -173,7 +182,11 @@ export default function PricingGrid() {
+ 
+                     <div className="lp-matrix-values-group">
+                       {row.values.map((val, idx) => (
+-                        <div key={idx} className="lp-matrix-val-cell">
++                        <div
++                          key={idx}
++                          className={`lp-matrix-val-cell ${plans[idx].popular ? 'is-popular' : ''}`}
++                          data-plan={plans[idx].name}
++                        >
+                           {renderCellContent(val)}
+                         </div>
+                       ))}
+diff --git a/src/components/SiteFooter.jsx b/src/components/SiteFooter.jsx
+index 24ec014..351ba98 100644
+--- a/src/components/SiteFooter.jsx
++++ b/src/components/SiteFooter.jsx
+@@ -78,7 +78,7 @@ export default function SiteFooter() {
+           <div className="lp-foot-identity">
+             <Link to="/" className="lp-foot-logo-link" aria-label="AH Administrative Solutions Home">
+               <img
+-                src="./ah-logo.jpg"
++                src="/ah-logo.jpg"
+                 alt="AH Administrative Solutions"
+                 className="lp-foot-logo"
+               />
+diff --git a/src/index.css b/src/index.css
+index ab95682..b3ac68a 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -1,6 +1,6 @@
+ :root {
+-  --font-display: 'Bricolage Grotesque';
+-  --font-body: 'Figtree';
++  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
++  --font-body: 'Figtree', 'Segoe UI', system-ui, -apple-system, sans-serif;
+   --font-mono: 'Geist Mono', 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
+ }
+ 
+@@ -119,6 +119,10 @@ body {
+ .lp-head {
+   background: var(--navy);
+   color: #fff;
++  position: sticky;
++  top: 0;
++  z-index: 50;
++  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+ }
+ 
+ .lp-head .lp-wrap {
+@@ -170,13 +174,14 @@ body {
+   position: absolute;
+   inset: 0;
+   z-index: -1;
+-  background-image: url('https://i.ibb.co/XfcdjNHY/office2.jpg');
+-  background-position: center;
++  background-image: url('/office2.jpg');
++  background-position: right center;
+   background-size: cover;
+-  opacity: 0.32;
++  opacity: 0.2;
+   pointer-events: none;
+-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, v 55%);
+-  mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
++  /* fade in from the right so the headline sits on clean navy */
++  -webkit-mask-image: linear-gradient(to right, transparent 30%, #000 85%);
++  mask-image: linear-gradient(to right, transparent 30%, #000 85%);
+ }
+ 
+ .lp-hero .lp-wrap {
+@@ -251,7 +256,7 @@ body {
+   background: rgba(23, 27, 32, 0.72);
+   backdrop-filter: blur(16px);
+   -webkit-backdrop-filter: blur(16px);
+-  border: 1px soid var(--mint);
++  border: 1px solid rgba(127, 224, 221, 0.22);
+   border-radius: 18px;
+   padding: 1.85rem;
+   box-shadow: 
+@@ -342,7 +347,8 @@ body {
+ 
+ .lp-dash-stat-val {
+   font-family: var(--font-display), sans-serif;
+-  font-size: 1.25rem;
++  white-space: nowrap;
++  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+   font-weight: 700;
+   color: #ffffff;
+   line-height: 1.1;
+@@ -1189,7 +1195,7 @@ body {
+       rgba(16, 34, 63, 0.82) 48%,
+       rgba(16, 34, 63, 0.38) 100%
+     ),
+-    url('https://i.ibb.co/XfcdjNHY/office2.jpg');
++    url('/office2.jpg');
+   background-size: cover;
+   background-position: center right;
+   background-repeat: no-repeat;
+@@ -1243,7 +1249,7 @@ body {
+         rgba(16, 34, 63, 0.94) 0%,
+         rgba(16, 34, 63, 0.88) 100%
+       ),
+-      url('hhttps://i.ibb.co/XfcdjNHY/office2.jpg');
++      url('/office2.jpg');
+   }
+ }
+ 
+@@ -1252,7 +1258,7 @@ body {
+    Closing CTA
+    ========================================================================== */
+ .lp-close {
+-  background: var(--paper);
++  background: var(--navy);
+   color: #fff;
+   padding: 5.5rem 0;
+   position: relative;
+@@ -1266,10 +1272,9 @@ body {
+   position: absolute;
+   inset: 0;
+   z-index: -1;
+-  background: url('https://i.ibb.co/LDtJg6F7/Gemini-Generated-Image-79vuhd79vuhd79vu.jpg');
+-  background-position: center;
+-  background-size: cover;
+-  background-repeat: no-repeat;
++  background:
++    linear-gradient(105deg, rgba(16, 34, 63, 0.96) 0%, rgba(16, 34, 63, 0.86) 55%, rgba(16, 34, 63, 0.7) 100%),
++    url('/office2.jpg') center / cover no-repeat;
+   pointer-events: none;
+ }
+ 
+@@ -1607,3 +1612,400 @@ body {
+   }
+ }
+ 
++
++/* ==========================================================================
++   UI refresh: shared fixes and previously unstyled pieces
++   ========================================================================== */
++html { scroll-behavior: smooth; scroll-padding-top: 84px; }
++
++.lp-nav { gap: 1.25rem; }
++.lp-nav .lp-btn { color: #fff; }
++
++/* "hide-sm" was used in the header but never defined */
++@media (max-width: 720px) {
++  .lp-nav .hide-sm { display: none; }
++}
++
++/* ----- Hero polish ----- */
++.lp-hero p.lead { line-height: 1.55; }
++.lp-dash-topbar { flex-wrap: wrap; gap: 0.75rem; }
++.lp-dash-note {
++  margin: 1.1rem 0 0;
++  font-size: 0.74rem;
++  color: #7f93ab;
++  text-align: center;
++}
++
++/* ----- Services: center the last (short) row instead of leaving a gap ----- */
++.lp-services-flip-grid {
++  display: flex;
++  flex-wrap: wrap;
++  justify-content: center;
++  gap: 1.75rem;
++}
++.lp-flip-card-wrapper {
++  flex: 0 1 calc((100% - 3.5rem) / 3);
++  min-width: 0;
++}
++@media (max-width: 1080px) {
++  .lp-services-flip-grid { gap: 1.5rem; }
++  .lp-flip-card-wrapper { flex-basis: calc((100% - 1.5rem) / 2); }
++}
++@media (max-width: 680px) {
++  .lp-services-flip-grid { gap: 1.25rem; }
++  .lp-flip-card-wrapper { flex-basis: 100%; }
++}
++
++/* ----- How it works (nav linked to #how but the section didn't exist) ----- */
++.lp-how { background: #fff; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
++.lp-how-head { max-width: 40rem; margin: 0 auto 3rem; text-align: center; }
++.lp-how-head h2 { margin-left: auto; margin-right: auto; }
++.lp-how-head .sub { margin-left: auto; margin-right: auto; }
++.lp-how-eyebrow {
++  display: inline-block;
++  margin-bottom: 0.6rem;
++  font-family: var(--font-mono);
++  font-size: 0.74rem;
++  font-weight: 600;
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++  color: var(--teal-d);
++}
++.lp-how-steps {
++  list-style: none;
++  margin: 0;
++  padding: 0;
++  display: grid;
++  grid-template-columns: repeat(3, minmax(0, 1fr));
++  gap: 1.75rem;
++  counter-reset: how;
++}
++.lp-how-steps li {
++  position: relative;
++  padding: 1.75rem 1.5rem 1.6rem;
++  background: var(--paper);
++  border: 1px solid var(--rule);
++  border-radius: 16px;
++  counter-increment: how;
++}
++.lp-how-steps li::before {
++  content: counter(how);
++  display: grid;
++  place-items: center;
++  width: 2.4rem;
++  height: 2.4rem;
++  margin-bottom: 1rem;
++  border-radius: 50%;
++  background: var(--grad-teal);
++  color: #fff;
++  font-family: var(--font-display);
++  font-weight: 700;
++  font-size: 1.05rem;
++}
++.lp-how-steps h3 { margin: 0 0 0.4rem; font-size: 1.2rem; color: var(--navy); }
++.lp-how-steps p { margin: 0; color: var(--muted); font-size: 0.97rem; }
++@media (max-width: 860px) {
++  .lp-how-steps { grid-template-columns: 1fr; gap: 1rem; }
++}
++
++/* ----- Pricing comparison: column headers + labelled values on mobile ----- */
++.lp-matrix-head {
++  display: grid;
++  grid-template-columns: 1.2fr 2.8fr;
++  align-items: end;
++  padding: 0 0 0.85rem;
++  border-bottom: 2px solid var(--rule);
++}
++.lp-matrix-head-plans {
++  display: grid;
++  grid-template-columns: repeat(3, minmax(0, 1fr));
++  gap: 1.5rem;
++  text-align: center;
++}
++.lp-matrix-head-plans span {
++  font-family: var(--font-display);
++  font-weight: 700;
++  font-size: 0.98rem;
++  color: var(--navy);
++}
++.lp-matrix-head-plans span.is-popular { color: var(--teal-d); }
++@media (max-width: 960px) {
++  .lp-matrix-head { display: none; }
++  .lp-matrix-val-cell {
++    gap: 0.75rem;
++    width: 100%;
++    justify-content: flex-start;
++  }
++  .lp-matrix-val-cell::before {
++    content: attr(data-plan);
++    flex: 0 0 9.5rem;
++    font-size: 0.8rem;
++    font-weight: 600;
++    color: var(--navy);
++    text-align: left;
++  }
++  .lp-matrix-val-cell.is-popular::before { color: var(--teal-d); }
++}
++@media (max-width: 600px) {
++  .lp-matrix-val-cell::before { flex-basis: 7.75rem; }
++  .lp-matrix-values-group { padding-left: 0; }
++}
++
++/* ----- Footer link that fell back to browser-default blue ----- */
++.lp-foot-ask a {
++  display: inline-flex;
++  align-items: center;
++  gap: 0.4rem;
++  color: var(--teal-d);
++  font-weight: 600;
++  text-decoration: underline;
++  text-underline-offset: 3px;
++}
++.lp-foot-ask a:hover { color: var(--navy); }
++
++/* ==========================================================================
++   Intake + Admin pages (these had no styles at all)
++   ========================================================================== */
++.lp-page { background: var(--paper); display: flex; flex-direction: column; }
++.lp-page > main { flex: 1; }
++.lp-page .lp-sec { padding: 4rem 0 5rem; }
++
++.lp-page-head { margin-bottom: 2.25rem; }
++.lp-page-head h1,
++.lp-page-head h2 { margin: 0; font-size: clamp(1.9rem, 3.8vw, 2.7rem); max-width: 36rem; }
++.lp-page-head .sub { color: var(--muted); max-width: 38rem; margin: 0.75rem 0 0; font-size: 1.05rem; }
++
++.lp-intake {
++  display: grid;
++  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
++  gap: 2.5rem;
++  align-items: start;
++}
++.lp-aside {
++  background: var(--navy);
++  color: #dbe5f1;
++  border-radius: 16px;
++  padding: 1.75rem;
++}
++.lp-aside h3 { margin: 0 0 1rem; font-size: 1.15rem; color: #fff; }
++.lp-aside ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
++.lp-aside li { display: flex; gap: 0.7rem; font-size: 0.97rem; line-height: 1.5; }
++.lp-aside svg { flex: 0 0 auto; margin-top: 0.2rem; color: #7fe0dd; }
++@media (max-width: 860px) {
++  .lp-intake { grid-template-columns: 1fr; gap: 1.75rem; }
++}
++
++.lp-form {
++  display: grid;
++  gap: 1.1rem;
++  position: relative;
++  background: #fff;
++  border: 1px solid var(--rule);
++  border-radius: 16px;
++  padding: 1.75rem;
++  box-shadow: 0 10px 30px -18px rgba(16, 34, 63, 0.25);
++}
++.lp-form label {
++  display: grid;
++  gap: 0.4rem;
++  font-size: 0.92rem;
++  font-weight: 600;
++  color: var(--navy);
++}
++.lp-form input,
++.lp-form select,
++.lp-form textarea {
++  width: 100%;
++  font: inherit;
++  font-weight: 400;
++  color: var(--ink);
++  background: #fff;
++  border: 1.5px solid #c9c3b3;
++  border-radius: 8px;
++  padding: 0.7rem 0.85rem;
++  transition: border-color 0.15s, box-shadow 0.15s;
++}
++.lp-form textarea { min-height: 8.5rem; resize: vertical; line-height: 1.5; }
++.lp-form input::placeholder,
++.lp-form textarea::placeholder { color: #8a95a5; }
++.lp-form input:hover,
++.lp-form select:hover,
++.lp-form textarea:hover { border-color: #9aa5b4; }
++.lp-form input:focus,
++.lp-form select:focus,
++.lp-form textarea:focus {
++  outline: none;
++  border-color: var(--teal);
++  box-shadow: 0 0 0 3px rgba(21, 158, 156, 0.2);
++}
++.lp-form .opt { font-weight: 400; color: var(--muted); }
++.lp-form .lp-btn { width: 100%; }
++.lp-form .lp-btn:disabled { opacity: 0.65; cursor: progress; transform: none; }
++@media (min-width: 561px) {
++  .lp-form .lp-btn { width: auto; }
++}
++.lp-form-narrow { max-width: 26rem; }
++
++.lp-chip {
++  display: inline-flex;
++  align-items: center;
++  gap: 0.4rem;
++  width: fit-content;
++  padding: 0.3rem 0.75rem;
++  border-radius: 999px;
++  background: var(--mint);
++  border: 1px solid rgba(21, 158, 156, 0.35);
++  color: var(--teal-d);
++  font-size: 0.85rem;
++  font-weight: 600;
++}
++
++.lp-msg {
++  margin: 0;
++  padding: 0.8rem 1rem;
++  border-radius: 8px;
++  font-size: 0.95rem;
++  line-height: 1.5;
++}
++.lp-msg.err { background: #fdecec; border: 1px solid #f2b8b8; color: #8a1f1f; }
++.lp-msg.ok { background: var(--mint); border: 1px solid rgba(21, 158, 156, 0.4); color: #0b5a58; }
++
++/* Admin */
++.lp-admin-bar {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 0.75rem 1rem;
++  margin-top: 0.75rem;
++  color: var(--muted);
++}
++.lp-admin-bar .lp-btn { padding: 0.35rem 0.9rem; font-size: 0.9rem; color: var(--navy); }
++.lp-empty { margin: 1.5rem 0 0; padding: 2rem; text-align: center; color: var(--muted); background: #fff; border: 1px dashed var(--rule); border-radius: 12px; }
++
++.lp-table-wrap {
++  margin-top: 1.5rem;
++  overflow-x: auto;
++  background: #fff;
++  border: 1px solid var(--rule);
++  border-radius: 12px;
++}
++.lp-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 46rem; }
++.lp-table th {
++  text-align: left;
++  padding: 0.8rem 1rem;
++  background: #f1efe8;
++  color: var(--navy);
++  font-size: 0.78rem;
++  letter-spacing: 0.05em;
++  text-transform: uppercase;
++  white-space: nowrap;
++  position: sticky;
++  top: 0;
++}
++.lp-table td { padding: 0.9rem 1rem; vertical-align: top; border-top: 1px solid var(--rule); }
++.lp-table tbody tr:hover { background: #faf9f6; }
++.lp-table a { color: var(--teal-d); }
++.lp-table select {
++  font: inherit;
++  font-size: 0.88rem;
++  font-weight: 600;
++  text-transform: capitalize;
++  padding: 0.3rem 0.5rem;
++  border-radius: 999px;
++  border: 1.5px solid currentColor;
++  background: #fff;
++  cursor: pointer;
++}
++.lp-table select[data-status='new'] { color: #b45309; background: #fff7ed; }
++.lp-table select[data-status='contacted'] { color: #1d4ed8; background: #eff6ff; }
++.lp-table select[data-status='booked'] { color: #0f7f7d; background: var(--mint); }
++.lp-table select[data-status='closed'] { color: #55657a; background: #f1f3f5; }
++.lp-table .msg-cell { max-width: 24rem; white-space: pre-wrap; overflow-wrap: anywhere; }
++
++/* ==========================================================================
++   Motion + accessibility
++   ========================================================================== */
++@media (prefers-reduced-motion: reduce) {
++  html { scroll-behavior: auto; }
++  .lp-live-pulse { animation: none; }
++  .lp-btn, .lp-btn:hover { transition: none; transform: none; }
++}
++
++/* ----- Closing CTA: text left, actions right, photo kept as a quiet texture ----- */
++.lp-close::before {
++  background:
++    linear-gradient(100deg, rgba(16, 34, 63, 0.97) 0%, rgba(16, 34, 63, 0.93) 60%, rgba(16, 34, 63, 0.86) 100%),
++    url('/office2.jpg') right center / cover no-repeat;
++}
++.lp-close .lp-wrap { display: block; }
++.lp-close-content {
++  display: flex;
++  flex-direction: row;
++  align-items: center;
++  justify-content: space-between;
++  gap: 2rem 3rem;
++  flex-wrap: wrap;
++}
++.lp-close-content-col { max-width: 36rem; }
++@media (max-width: 860px) {
++  .lp-close-content { flex-direction: column; align-items: flex-start; }
++}
++
++/* ----- Small type/spacing fixes ----- */
++.lp-how-head h2 { max-width: 44rem; }
++.lp-how-steps h3 { margin-bottom: 0.55rem; }
++.lp-pricing-title { max-width: none; }
++
++.lp-close::before {
++  background:
++    radial-gradient(60rem 24rem at 85% 0%, rgba(21, 158, 156, 0.22), transparent 60%),
++    linear-gradient(rgba(16, 34, 63, 0.95), rgba(16, 34, 63, 0.95)),
++    url('/office2.jpg') center / cover no-repeat;
++}
++@media (min-width: 861px) {
++  .lp-close-content { flex-wrap: nowrap; }
++  .lp-close-content-col { max-width: 34rem; }
++  .lp-close-actions { flex-shrink: 0; }
++}
++
++/* About: keep body copy on the darker part of the photo */
++.lp-about.lp-about-bg::before {
++  background-image:
++    linear-gradient(105deg, rgba(16, 34, 63, 0.97) 0%, rgba(16, 34, 63, 0.92) 55%, rgba(16, 34, 63, 0.5) 100%),
++    url('/office2.jpg');
++}
++@media (max-width: 860px) {
++  .lp-about.lp-about-bg::before {
++    background-image:
++      linear-gradient(to bottom, rgba(16, 34, 63, 0.95) 0%, rgba(16, 34, 63, 0.9) 100%),
++      url('/office2.jpg');
++  }
++}
++
++/* Header: keep brand + button on one row on small phones */
++.lp-head .lp-wrap { min-height: 68px; height: auto; flex-wrap: nowrap; gap: 1rem; }
++.lp-brand { min-width: 0; white-space: nowrap; }
++@media (max-width: 480px) {
++  .lp-head .lp-wrap { padding: 0 1rem; }
++  .lp-brand > span > span:last-child { font-size: 0.9rem !important; }
++  .lp-nav { gap: 0.75rem; }
++  .lp-nav .lp-btn { padding: 0.45rem 0.85rem !important; font-size: 0.92rem; white-space: nowrap; }
++}
++@media (max-width: 600px) {
++  .lp-matrix-val-cell::before { flex-basis: 8.5rem; }
++}
++
++/* keep "(optional)" inline with its label text */
++.lp-form label .opt { display: inline; margin-left: 0.25rem; }
++
++@media (max-width: 600px) {
++  .lp-head .lp-wrap {
++    flex-direction: row;
++    align-items: center;
++    justify-content: space-between;
++    padding-top: 0;
++    padding-bottom: 0;
++    min-height: 64px;
++  }
++  .lp-nav { width: auto; justify-content: flex-end; }
++}
+diff --git a/src/pages/Admin.jsx b/src/pages/Admin.jsx
+index b7aed40..2879e69 100644
+--- a/src/pages/Admin.jsx
++++ b/src/pages/Admin.jsx
+@@ -39,18 +39,22 @@ export default function Admin() {
+     <div className="lp-page lp">
+       <SiteHeader />
+       <main className="lp-sec"><div className="lp-wrap">
+-        <h2>Admin</h2>
++        <div className="lp-page-head"><h1>Admin</h1></div>
+         {session === undefined ? null : !session ? (
+-          <form className="lp-form" onSubmit={signIn}>
++          <form className="lp-form lp-form-narrow" onSubmit={signIn}>
+             <label>Email<input name="email" type="email" required autoComplete="username" /></label>
+             <label>Password<input name="password" type="password" required autoComplete="current-password" /></label>
+             {error && <p className="lp-msg err" role="alert">{error}</p>}
+             <div><button className="lp-btn">Sign in</button></div>
+           </form>
+         ) : (<>
+-          <p className="sub">{rows.length} intake request{rows.length === 1 ? '' : 's'}. <button className="lp-btn ghost" style={{ padding: '.3rem .8rem', marginLeft: '.5rem', color: 'var(--navy)' }} onClick={() => supabase.auth.signOut()}>Sign out</button></p>
++          <div className="lp-admin-bar">
++            <span>{rows.length} intake request{rows.length === 1 ? '' : 's'}</span>
++            <button className="lp-btn ghost" onClick={() => supabase.auth.signOut()}>Sign out</button>
++          </div>
+           {error && <p className="lp-msg err" role="alert" style={{ marginTop: '1rem' }}>{error}</p>}
+-          <div className="lp-table-wrap">
++          {rows.length === 0 && !error && <p className="lp-empty">No requests yet. New intake submissions will show up here.</p>}
++          {rows.length > 0 && <div className="lp-table-wrap">
+             <table className="lp-table">
+               <thead><tr><th>Received</th><th>Who</th><th>Interest</th><th>Message</th><th>Status</th></tr></thead>
+               <tbody>{rows.map((r) => (
+@@ -58,12 +62,12 @@ export default function Admin() {
+                   <td>{new Date(r.created_at).toLocaleDateString()}</td>
+                   <td><strong>{r.name}</strong><br /><a href={`mailto:${r.email}`}>{r.email}</a>{r.company && <><br />{r.company}</>}</td>
+                   <td>{r.interest}</td>
+-                  <td style={{ maxWidth: '24rem' }}>{r.message}</td>
+-                  <td><select value={r.status} onChange={(e) => setStatus(r.id, e.target.value)}>{STATUSES.map((s) => <option key={s}>{s}</option>)}</select></td>
++                  <td className="msg-cell">{r.message}</td>
++                  <td><select data-status={r.status} aria-label={`Status for ${r.name}`} value={r.status} onChange={(e) => setStatus(r.id, e.target.value)}>{STATUSES.map((s) => <option key={s}>{s}</option>)}</select></td>
+                 </tr>))}
+               </tbody>
+             </table>
+-          </div>
++          </div>}
+         </>)}
+       </div></main>
+     </div>
+diff --git a/src/pages/Home.jsx b/src/pages/Home.jsx
+index 8c464c5..b2e2919 100644
+--- a/src/pages/Home.jsx
++++ b/src/pages/Home.jsx
+@@ -1,11 +1,10 @@
+-import { Link } from 'react-router-dom';
+-import { ArrowRight } from 'lucide-react';
+ import SiteHeader from '../components/SiteHeader.jsx';
+ import SiteFooter from '../components/SiteFooter.jsx';
+ import PricingGrid from '../components/PricingGrid.jsx';
+ import About from '../components/About.jsx';
+ import CallAction from '../components/CallAction.jsx';
+ import Hero from '../components/Hero.jsx';
++import HowItWorks from '../components/HowItWorks.jsx';
+ import ServicesFlipSection from '../components/ServicesFlipSection.jsx';
+ 
+ export default function Home() {
+@@ -14,14 +13,13 @@ export default function Home() {
+       <SiteHeader landing />
+       <main>
+         <Hero />
+-        <ServicesFlipSection /> 
++        <ServicesFlipSection />
++        <HowItWorks />
+         <CallAction />
+-        <PricingGrid /> 
+-
+-        <About />   
++        <PricingGrid />
++        <About />
+       </main>
+-
+       <SiteFooter />
+     </div>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/src/pages/Intake.jsx b/src/pages/Intake.jsx
+index 353324f..3fd962a 100644
+--- a/src/pages/Intake.jsx
++++ b/src/pages/Intake.jsx
+@@ -1,14 +1,16 @@
+ import { useState } from 'react';
+ import { useSearchParams } from 'react-router-dom';
++import { CheckCircle2, Clock, ShieldCheck, CalendarCheck } from 'lucide-react';
+ import SiteHeader from '../components/SiteHeader.jsx';
+ import SiteFooter from '../components/SiteFooter.jsx';
+ import { getSupabase } from '../lib/supabase.js';
+ 
+-const OPTIONS = ['Workflow Review', 'Virtual Assistant Retainer', 'Dedicated Assistant', 'Not sure yet'];
++const OPTIONS = ['Workflow Review', 'Part-Time Retainer', 'Dedicated Assistant', 'Not sure yet'];
+ 
+ function IntakeForm() {
+   const [params] = useSearchParams();
+   const plan = params.get('plan');
++  const service = params.get('service')?.slice(0, 80) || '';
+   const [state, setState] = useState({ status: 'idle', error: '' });
+ 
+   async function onSubmit(e) {
+@@ -16,12 +18,14 @@ function IntakeForm() {
+     const f = new FormData(e.currentTarget);
+     if (f.get('website')) return; // honeypot
+     setState({ status: 'sending', error: '' });
++    const note = f.get('message').trim();
++    const message = [service && `Service of interest: ${service}`, note].filter(Boolean).join('\n\n');
+     const { error } = await getSupabase().from('intake_requests').insert({
+       name: f.get('name').trim(),
+       email: f.get('email').trim(),
+       company: f.get('company').trim() || null,
+       interest: f.get('interest'),
+-      message: f.get('message').trim() || null,
++      message: message ? message.slice(0, 4000) : null,
+     });
+     setState(error
+       ? { status: 'error', error: 'Your request did not send. Please try again, or email operations@ahadmin.com.' }
+@@ -29,20 +33,25 @@ function IntakeForm() {
+   }
+ 
+   if (state.status === 'done') {
+-    return <p className="lp-msg ok" role="status" style={{ marginTop: '2rem', maxWidth: '36rem' }}>Thanks. Your request is in, and I will reply by email within one business day.</p>;
++    return (
++      <p className="lp-msg ok" role="status" style={{ fontSize: '1.05rem', padding: '1.25rem 1.5rem' }}>
++        Thanks. Your request is in, and I will reply by email within one business day.
++      </p>
++    );
+   }
+ 
+   return (
+     <form className="lp-form" onSubmit={onSubmit}>
++      {service && <span className="lp-chip">Interested in: {service}</span>}
+       <label>Your name<input name="name" required maxLength={120} autoComplete="name" /></label>
+       <label>Email<input name="email" type="email" required maxLength={200} autoComplete="email" /></label>
+-      <label>Company<input name="company" maxLength={160} autoComplete="organization" /></label>
++      <label><span>Company <span className="opt">(optional)</span></span><input name="company" maxLength={160} autoComplete="organization" /></label>
+       <label>What are you interested in?
+         <select name="interest" defaultValue={OPTIONS.includes(plan) ? plan : 'Not sure yet'}>
+           {OPTIONS.map((o) => <option key={o}>{o}</option>)}
+         </select>
+       </label>
+-      <label>What tasks are piling up?<textarea name="message" maxLength={4000} placeholder="For example: invoices go out late, and I can't keep up with scheduling." /></label>
++      <label>What tasks are piling up?<textarea name="message" maxLength={3900} placeholder="For example: invoices go out late, and I can't keep up with scheduling." /></label>
+       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }} />
+       {state.status === 'error' && <p className="lp-msg err" role="alert">{state.error}</p>}
+       <div><button className="lp-btn" disabled={state.status === 'sending'}>{state.status === 'sending' ? 'Sending...' : 'Send request'}</button></div>
+@@ -55,9 +64,21 @@ export default function Intake() {
+     <div className="lp-page lp">
+       <SiteHeader />
+       <main className="lp-sec"><div className="lp-wrap">
+-        <h2>Tell me what you need off your plate.</h2>
+-        <p className="sub">Your answers stay confidential. I will reply with next steps and a time for your workflow review.</p>
+-        <IntakeForm />
++        <div className="lp-page-head">
++          <h1>Tell me what you need off your plate.</h1>
++          <p className="sub">Your answers stay confidential. I will reply with next steps and a time for your workflow review.</p>
++        </div>
++        <div className="lp-intake">
++          <IntakeForm />
++          <aside className="lp-aside" aria-label="What happens next">
++            <h3>What happens next</h3>
++            <ul>
++              <li><Clock size={18} aria-hidden="true" /><span>I reply by email within one business day.</span></li>
++              <li><CalendarCheck size={18} aria-hidden="true" /><span>We set a time for your workflow review.</span></li>
++              <li><ShieldCheck size={18} aria-hidden="true" /><span>Everything you share stays confidential.</span></li>
++            </ul>
++          </aside>
++        </div>
+       </div></main>
+       <SiteFooter />
+     </div>

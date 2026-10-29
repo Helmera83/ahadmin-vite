@@ -156,6 +156,15 @@ export default function PricingGrid() {
                 <span>{section.category}</span>
               </div>
 
+              <div className="lp-matrix-head" aria-hidden="true">
+                <span />
+                <div className="lp-matrix-head-plans">
+                  {plans.map((p) => (
+                    <span key={p.id} className={p.popular ? 'is-popular' : ''}>{p.name}</span>
+                  ))}
+                </div>
+              </div>
+
               <div className="lp-matrix-table">
                 {section.rows.map((row) => (
                   <div key={row.feature} className="lp-matrix-row">
@@ -173,7 +182,11 @@ export default function PricingGrid() {
 
                     <div className="lp-matrix-values-group">
                       {row.values.map((val, idx) => (
-                        <div key={idx} className="lp-matrix-val-cell">
+                        <div
+                          key={idx}
+                          className={`lp-matrix-val-cell ${plans[idx].popular ? 'is-popular' : ''}`}
+                          data-plan={plans[idx].name}
+                        >
                           {renderCellContent(val)}
                         </div>
                       ))}

@@ -39,18 +39,22 @@ export default function Admin() {
     <div className="lp-page lp">
       <SiteHeader />
       <main className="lp-sec"><div className="lp-wrap">
-        <h2>Admin</h2>
+        <div className="lp-page-head"><h1>Admin</h1></div>
         {session === undefined ? null : !session ? (
-          <form className="lp-form" onSubmit={signIn}>
+          <form className="lp-form lp-form-narrow" onSubmit={signIn}>
             <label>Email<input name="email" type="email" required autoComplete="username" /></label>
             <label>Password<input name="password" type="password" required autoComplete="current-password" /></label>
             {error && <p className="lp-msg err" role="alert">{error}</p>}
             <div><button className="lp-btn">Sign in</button></div>
           </form>
         ) : (<>
-          <p className="sub">{rows.length} intake request{rows.length === 1 ? '' : 's'}. <button className="lp-btn ghost" style={{ padding: '.3rem .8rem', marginLeft: '.5rem', color: 'var(--navy)' }} onClick={() => supabase.auth.signOut()}>Sign out</button></p>
+          <div className="lp-admin-bar">
+            <span>{rows.length} intake request{rows.length === 1 ? '' : 's'}</span>
+            <button className="lp-btn ghost" onClick={() => supabase.auth.signOut()}>Sign out</button>
+          </div>
           {error && <p className="lp-msg err" role="alert" style={{ marginTop: '1rem' }}>{error}</p>}
-          <div className="lp-table-wrap">
+          {rows.length === 0 && !error && <p className="lp-empty">No requests yet. New intake submissions will show up here.</p>}
+          {rows.length > 0 && <div className="lp-table-wrap">
             <table className="lp-table">
               <thead><tr><th>Received</th><th>Who</th><th>Interest</th><th>Message</th><th>Status</th></tr></thead>
               <tbody>{rows.map((r) => (
@@ -58,12 +62,12 @@ export default function Admin() {
                   <td>{new Date(r.created_at).toLocaleDateString()}</td>
                   <td><strong>{r.name}</strong><br /><a href={`mailto:${r.email}`}>{r.email}</a>{r.company && <><br />{r.company}</>}</td>
                   <td>{r.interest}</td>
-                  <td style={{ maxWidth: '24rem' }}>{r.message}</td>
-                  <td><select value={r.status} onChange={(e) => setStatus(r.id, e.target.value)}>{STATUSES.map((s) => <option key={s}>{s}</option>)}</select></td>
+                  <td className="msg-cell">{r.message}</td>
+                  <td><select data-status={r.status} aria-label={`Status for ${r.name}`} value={r.status} onChange={(e) => setStatus(r.id, e.target.value)}>{STATUSES.map((s) => <option key={s}>{s}</option>)}</select></td>
                 </tr>))}
               </tbody>
             </table>
-          </div>
+          </div>}
         </>)}
       </div></main>
     </div>

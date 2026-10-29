@@ -78,7 +78,7 @@ export default function SiteFooter() {
           <div className="lp-foot-identity">
             <Link to="/" className="lp-foot-logo-link" aria-label="AH Administrative Solutions Home">
               <img
-                src="./ah-logo.jpg"
+                src="/ah-logo.jpg"
                 alt="AH Administrative Solutions"
                 className="lp-foot-logo"
               />
