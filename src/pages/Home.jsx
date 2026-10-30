@@ -13,11 +13,13 @@ export default function Home() {
       <SiteHeader landing />
       <main>
         <Hero />
-        <ServicesFlipSection />
         <HowItWorks />
-        <CallAction />
+        <ServicesFlipSection />
+
         <PricingGrid />
         <About />
+       <CallAction />
+        
       </main>
       <SiteFooter />
     </div>

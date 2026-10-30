@@ -178,11 +178,12 @@ export default function ServicesFlipSection() {
                 </div>
 
                 <h3 className="lp-flip-title">{svc.name}</h3>
+                <p className="lp-flip-tagline">{svc.tagline}</p>
 
                 <div className="lp-flip-deliverables-wrap">
                   <span className="lp-card-label">Core Deliverables</span>
                   <ul className="lp-card-list">
-                    {svc.deliverables.map((item) => (
+                    {svc.deliverables.slice(0, 3).map((item) => (
                       <li key={item}>
                         <Check size={14} className="lp-check" aria-hidden="true" />
                         <span>{item}</span>

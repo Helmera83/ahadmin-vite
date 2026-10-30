@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export default function CTA() {
+
   return (
     <section className="lp-sec lp-close" id="contact">
       <div className="lp-wrap">
@@ -20,6 +21,8 @@ export default function CTA() {
             <a href="mailto:operations@ahadmin.com" className="lp-btn ghost">
               Ask a quick question
             </a>
+          </div>
+          <div>
           </div>
         </div>
       </div>
