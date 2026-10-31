@@ -2400,3 +2400,73 @@ html {
     transform: none;
   }
 }
+/* ==========================================================================
+   Multi-Step Intake Questionnaire Styles
+   ========================================================================== */
+.lp-intake-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.5rem;
+}
+
+.lp-intake-step-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal-d);
+}
+
+.lp-intake-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.lp-intake-dot {
+  width: 24px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--rule);
+  transition: background 0.25s ease;
+}
+
+.lp-intake-dot.active {
+  background: var(--teal);
+  width: 36px;
+}
+
+.lp-intake-dot.passed {
+  background: var(--navy);
+}
+
+.lp-form-step h3 {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.lp-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.lp-form-grid label {
+  grid-column: 1 / -1;
+}
+
+
+.lp-intake-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}

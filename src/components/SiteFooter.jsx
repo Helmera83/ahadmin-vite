@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Clock, ArrowUpRight, ArrowRight, Linkedin, Twitter, Check, AlertCircle } from 'lucide-react';
+import { Mail, Clock, ArrowUpRight, ArrowRight, Linkedin, Facebook, MessageCircle, Check, AlertCircle } from 'lucide-react';
 import { getSupabase } from '../lib/supabase.js';
 import BrandLogo from './BrandLogo.jsx';
 
 export default function SiteFooter() {
-  const supabase = getSupabase();
   const currentYear = new Date().getFullYear();
+  const supabase = getSupabase();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -25,9 +25,8 @@ export default function SiteFooter() {
         .insert([{ email: email.trim().toLowerCase(), source: 'footer_form' }]);
 
       if (error) {
-        // Handle duplicate email (PostgreSQL error code 23505)
         if (error.code === '23505') {
-          setSubscribed(true); // Treat existing subscriber gracefully
+          setSubscribed(true);
         } else {
           throw error;
         }
@@ -59,22 +58,31 @@ export default function SiteFooter() {
               <span className="lp-foot-socials-label">Connect</span>
               <div className="lp-foot-socials">
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/amanda-helmer-durant"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="lp-social-link"
-                  aria-label="LinkedIn Profile"
+                  aria-label="LinkedIn"
                 >
                   <Linkedin size={16} />
                 </a>
                 <a
-                  href="https://x.com"
+                  href="https://facebook.com"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="lp-social-link"
-                  aria-label="X Profile"
+                  aria-label="Facebook"
                 >
-                  <Twitter size={16} />
+                  <Facebook size={16} />
+                </a>
+                <a
+                  href="https://whatsapp.com"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="lp-social-link"
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle size={16} />
                 </a>
               </div>
             </div>

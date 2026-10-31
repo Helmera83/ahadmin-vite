@@ -1,11 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
-if (!url || !key) console.warn('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY. Copy .env.example to .env.');
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-let client;
-export function getSupabase() {
-  if (!client) client = createClient(url || 'http://localhost', key || 'missing');
-  return client;
-}
+let supabaseInstance = null;
+
+export const getSupabase = () => {
+  if (!supabaseInstance) {
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.warn('Supabase credentials missing. Check your .env file.');
+    }
+    supabaseInstance = createClient(
+      supabaseUrl || 'https://placeholder.supabase.co', 
+      supabaseAnonKey || 'placeholder-key'
+    );
+  }
+  return supabaseInstance;
+};
