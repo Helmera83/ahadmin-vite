@@ -5,7 +5,7 @@ const steps = [
   {
     num: '01',
     title: 'Audit & Intake (15 Mins)',
-    desc: 'Submit your intake form outlining your current software bottlenecks, backlogged invoices, or scheduling friction[cite: 1, 15].',
+    desc: 'Submit your intake form outlining your current software bottlenecks, backlogged invoices, or scheduling friction.',
   },
   {
     num: '02',
@@ -39,12 +39,6 @@ export default function HowItWorks() {
             </li>
           ))}
         </ol>
-
-        <div className="lp-how-action">
-          <Link to="/intake" className="lp-btn">
-            Get Started Now <ArrowRight size={17} />
-          </Link>
-        </div>
       </div>
     </section>
   );

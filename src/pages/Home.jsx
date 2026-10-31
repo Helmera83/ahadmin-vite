@@ -24,12 +24,14 @@ export default function Home() {
 
         {/* 4. Rapid 3-Step Onboarding Process */}
         <HowItWorks />
+        
+        {/* 5. Founder Background & Live Operations Snapshot */}
+        <About />
 
         {/* 5. Transparent Retainers & Feature Comparison Matrix */}
         <PricingGrid />
 
-        {/* 6. Founder Background & Live Operations Snapshot */}
-        <About />
+       
 
         {/* 7. Final Conversion Closer */}
         <CallAction />

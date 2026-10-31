@@ -14,7 +14,7 @@ export default function Hero() {
           <h1>Reclaim 40+ hours every month from operational drag.</h1>
 
           <p className="lead">
-            Fixed-price bookkeeping reconciliation, automated CRM pipelines, calendar defense, and executive administrative leverage for growing business owners[cite: 1, 15].
+            Fixed-price bookkeeping reconciliation, automated CRM pipelines, calendar defense, and executive administrative leverage for growing business owners.
           </p>
 
           <div className="lp-actions">

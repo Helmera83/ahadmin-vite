@@ -1,28 +1,28 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
-export default function CTA() {
-
+export default function CallAction() {
   return (
-    <section className="lp-sec lp-close" id="contact">
+    <section className="lp-close">
       <div className="lp-wrap">
         <div className="lp-close-content">
           <div className="lp-close-content-col">
-            <span className="lp-close-eyebrow">Ready to reclaim your time?</span>
-            <h2>Hand off the tasks you keep putting off.</h2>
+            <span className="lp-close-eyebrow">Ready to delegate?</span>
+            <h2>Stop letting administrative drag dictate your calendar.</h2>
             <p className="lp-close-sub">
-              Whether you need invoicing reconciled, an inbox brought under control, or a full optimization review—let's get your operations running smoothly.
+              Book a consultation to map out your operational bottlenecks, or select a monthly retainer to get started this week.
             </p>
           </div>
-          <div className="lp-close-actions">
-            <Link to="/intake" className="lp-btn">
-              Book a consultation <ArrowRight size={18} />
-            </Link>
-            <a href="mailto:operations@ahadmin.com" className="lp-btn ghost">
-              Ask a quick question
-            </a>
-          </div>
-          <div>
+
+          <div className="lp-rgb-action-box">
+            <div className="lp-close-actions">
+              <Link to="/intake" className="lp-btn">
+                Get Started with an Intake <ArrowRight size={18} />
+              </Link>
+              <a href="#pricing" className="lp-btn ghost">
+                Compare Retainers
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-// Placeholder: replace with your real logo component or an <Image>.
+
 export default function BrandLogo({ size = 36 }) {
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem' }}>

@@ -67,11 +67,11 @@ export default function About() {
             <h2>Systems, numbers, and operations done right.</h2>
             <p className="sub">
               I partner with founders and business owners to remove operational friction—streamlining
-              financial tracking, organizing workflows, and deploying reliable automated systems so you can focus on core growth[cite: 1].
+              financial tracking, organizing workflows, and deploying reliable automated systems so you can focus on core growth.
             </p>
             <p className="lp-about-details">
               My background brings together verified accreditations in business intelligence, predictive & agile
-              project management, and certified accounting administration to deliver accurate, dependable solutions for your everyday operations[cite: 1].
+              project management, and certified accounting administration to deliver accurate, dependable solutions for your everyday operations.
             </p>
 
             {/* Credential Badges Row */}
