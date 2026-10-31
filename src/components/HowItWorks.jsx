@@ -1,15 +1,21 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+
 const steps = [
   {
-    title: 'Tell me what is piling up',
-    body: 'Send a short request describing the tasks that keep slipping. I reply by email within one business day.',
+    num: '01',
+    title: 'Audit & Intake (15 Mins)',
+    desc: 'Submit your intake form outlining your current software bottlenecks, backlogged invoices, or scheduling friction[cite: 1, 15].',
   },
   {
-    title: 'We run a workflow review',
-    body: 'We walk through your invoicing, inbox, scheduling, and client records, then pick the plan that fits.',
+    num: '02',
+    title: 'Secure Access & Protocol Sync',
+    desc: 'Delegate access securely via 1Password or LastPass and align on communication channels (Slack, email, or weekly standup).',
   },
   {
-    title: 'Hand it off and get your time back',
-    body: 'I take the recurring work on, and you get a steady, predictable operation to build on.',
+    num: '03',
+    title: 'Autonomous Execution (Within 48h)',
+    desc: 'Your operational queue goes live. Tasks, daily triages, and bank reconciliations run quietly in the background without micromanagement.',
   },
 ];
 
@@ -18,17 +24,27 @@ export default function HowItWorks() {
     <section className="lp-sec lp-how" id="how">
       <div className="lp-wrap">
         <div className="lp-how-head">
-          <span className="lp-how-eyebrow">How it works</span>
-          <h2>Three steps from overwhelmed to handled.</h2>
+          <span className="lp-how-eyebrow">Onboarding Process</span>
+          <h2>Live within 48 hours. <br /> Zero complex onboarding.</h2>
+          <p className="sub">
+            Designed for busy operators who need execution immediately.
+          </p>
         </div>
+
         <ol className="lp-how-steps">
           {steps.map((s) => (
-            <li key={s.title}>
+            <li key={s.num}>
               <h3>{s.title}</h3>
-              <p>{s.body}</p>
+              <p>{s.desc}</p>
             </li>
           ))}
         </ol>
+
+        <div className="lp-how-action">
+          <Link to="/intake" className="lp-btn">
+            Get Started Now <ArrowRight size={17} />
+          </Link>
+        </div>
       </div>
     </section>
   );

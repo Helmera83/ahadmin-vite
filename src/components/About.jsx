@@ -28,23 +28,23 @@ export default function About() {
     <section className="lp-sec lp-about lp-about-bg" id="about">
       <div className="lp-wrap">
         <div className="lp-about-grid">
-          {/* Left Column: Bio */}
+          {/* Left: Bio & Philosophy */}
           <div className="lp-about-card-hero">
             <span className="lp-about-eyebrow">Behind AH Admin Solutions</span>
             <h2>Systems, numbers, and operations done right.</h2>
             <p className="sub">
-              I partner with founders and business owners to take operational friction off their plates—streamlining
+              I partner with founders and business owners to remove operational friction—streamlining
               financial tracking, organizing workflows, and deploying reliable automated systems so you can focus on core growth.
             </p>
             <p className="lp-about-details">
-              My background brings together verified training in business intelligence, project management,
+              My background brings together verified accreditations in business intelligence, project management,
               and certified accounting administration to deliver accurate, dependable solutions for your everyday operations.
             </p>
           </div>
 
-          {/* Right Column: Operations Snapshot Card */}
+          {/* Right: Real-Time Operations Snapshot Card */}
           <div className="lp-about-proof-col">
-            <div className="lp-hero-proof" aria-label="Example operations snapshot">
+            <div className="lp-hero-proof" aria-label="Operations metrics">
               <div className="lp-proof-topbar">
                 <div>
                   <span className="lp-proof-kicker">Operations snapshot</span>
@@ -54,6 +54,7 @@ export default function About() {
                   <span aria-hidden="true" /> Live
                 </span>
               </div>
+
               <div className="lp-proof-stats">
                 {stats.map(({ label, to, prefix = '', suffix = '', icon: Icon }) => (
                   <div className="lp-proof-stat" key={label}>
@@ -69,6 +70,7 @@ export default function About() {
                   </div>
                 ))}
               </div>
+
               <div className="lp-proof-footer">
                 <span>
                   <CheckCircle2 size={15} aria-hidden="true" /> Weekly workflows on track

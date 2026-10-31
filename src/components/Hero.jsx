@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle2, Shield } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -8,17 +8,34 @@ export default function Hero() {
         <div className="lp-hero-copy">
           <div className="lp-hero-pill">
             <Sparkles size={14} className="lp-hero-spark" />
-            <span>Bookkeeping · Automations · Scheduling</span>
+            <span>Dedicated Operations & Administrative Bandwidth</span>
           </div>
-          <h1>Dedicated Virtual Assistant for Small Business Owners</h1>
+
+          <h1>Reclaim 40+ hours every month from operational drag.</h1>
+
           <p className="lead">
-            Let us handle the administrative heavy lifting, <strong>so you can focus on growing your business.</strong>
+            Fixed-price bookkeeping reconciliation, automated CRM pipelines, calendar defense, and executive administrative leverage for growing business owners[cite: 1, 15].
           </p>
+
           <div className="lp-actions">
             <Link to="/intake" className="lp-btn">
-              Start with a consultation <ArrowRight size={18} />
+              Book an Optimization Consultation <ArrowRight size={18} />
             </Link>
-            <a href="#pricing" className="lp-btn ghost">See pricing</a>
+            <a href="#pricing" className="lp-btn ghost">
+              View Plans & Retainers
+            </a>
+          </div>
+
+          <div className="lp-hero-guarantees">
+            <span className="lp-guarantee-item">
+              <CheckCircle2 size={15} /> Fixed monthly retainers
+            </span>
+            <span className="lp-guarantee-item">
+              <Shield size={15} /> Standard NDA & security agreements
+            </span>
+            <span className="lp-guarantee-item">
+              <CheckCircle2 size={15} /> Pause or cancel anytime
+            </span>
           </div>
         </div>
       </div>

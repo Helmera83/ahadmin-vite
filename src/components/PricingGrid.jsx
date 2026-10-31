@@ -8,38 +8,35 @@ const plans = [
     badge: 'One-Time Audit',
     subtitle: 'One-time Optimization Consultation',
     price: '$500',
-    period: 'one-time',
+    period: 'flat rate',
     cta: 'Book a Review',
-    popular: false,
     highlight: false,
   },
   {
     id: 'part-time',
     name: 'Part-Time Retainer',
     badge: 'Most Popular',
-    subtitle: 'Virtual Assistant Retainer',
+    subtitle: 'Dedicated Operational Retainer',
     price: '$1,400',
     period: 'per month',
     cta: 'Start Retainer',
-    popular: true,
     highlight: true,
   },
   {
     id: 'full-time',
     name: 'Dedicated Assistant',
     badge: 'High Capacity',
-    subtitle: 'High-Volume Dedicated Support',
+    subtitle: 'High-Volume Executive Support',
     price: '$2,600',
     period: 'per month',
     cta: 'Check Availability',
-    popular: false,
     highlight: false,
   },
 ];
 
 const featureComparison = [
   {
-    category: 'OVERVIEW & CAPACITY',
+    category: 'OVERVIEW & ALLOCATIONS',
     rows: [
       {
         feature: 'Monthly Dedicated Hours',
@@ -47,18 +44,18 @@ const featureComparison = [
         values: ['Consultation only', 'Up to 40 hrs / mo', 'Up to 120 hrs / mo'],
       },
       {
-        feature: 'Invoicing & Bill Reconciliation',
-        tooltip: 'Preparing client invoices, tracking receipts, and matching accounts',
+        feature: 'Invoicing & Deposit Reconciliation',
+        tooltip: 'Preparing client invoices, tracking receipts, and matching bank accounts',
         values: [true, true, true],
       },
       {
-        feature: 'CRM Cleanup & Tagging',
+        feature: 'CRM Database Cleanup & Tagging',
         tooltip: 'Organizing contact lists, tags, and data deduplication',
         values: [true, true, true],
       },
       {
-        feature: 'Calendar & Scheduling Management',
-        tooltip: 'Proactive calendar management, invites, and conflict handling',
+        feature: 'Calendar & Scheduling Defense',
+        tooltip: 'Proactive calendar management, invites, and focus buffers',
         values: [false, true, true],
       },
       {
@@ -72,7 +69,7 @@ const featureComparison = [
         values: ['Email', 'Slack & Email', 'Dedicated Slack & Daily sync'],
       },
       {
-        feature: 'Turnaround Time',
+        feature: 'SLA Turnaround Speed',
         tooltip: 'Target delivery speed for routine requests',
         values: ['3 Business days', '24 - 48 Hours', 'Same-day priority'],
       },
@@ -99,16 +96,15 @@ export default function PricingGrid() {
   return (
     <section className="lp-sec lp-pricing-section" id="pricing">
       <div className="lp-wrap">
-        {/* Header */}
         <div className="lp-pricing-head">
           <span className="lp-pricing-eyebrow">Investment & Plans</span>
           <h2 className="lp-pricing-title">Simple pricing. Serious value.</h2>
           <p className="lp-pricing-subtitle">
-            Pick the plan that matches your operational needs right now. Adjust, upgrade, or scale anytime—no penalties or hidden fees.
+            Pick the plan that matches your operational needs right now.<br /> Adjust, upgrade, or pause anytime with no lock-in.
           </p>
         </div>
 
-        {/* Pricing Cards Grid */}
+        {/* 3 Tier Cards */}
         <div className="lp-pricing-cards-grid">
           {plans.map((p) => (
             <div
@@ -148,21 +144,21 @@ export default function PricingGrid() {
           ))}
         </div>
 
-        {/* Comparison Matrix */}
+        {/* Comparison Matrix Table */}
         <div className="lp-pricing-matrix">
+          <div className="lp-matrix-head">
+            <span className="lp-matrix-head-label">Deliverable Breakdown</span>
+            <div className="lp-matrix-head-plans">
+              <span>Workflow Review</span>
+              <span className="is-popular">Part-Time Retainer</span>
+              <span>Dedicated Assistant</span>
+            </div>
+          </div>
+
           {featureComparison.map((section) => (
             <div key={section.category} className="lp-matrix-section">
               <div className="lp-matrix-cat-header">
                 <span>{section.category}</span>
-              </div>
-
-              <div className="lp-matrix-head" aria-hidden="true">
-                <span />
-                <div className="lp-matrix-head-plans">
-                  {plans.map((p) => (
-                    <span key={p.id} className={p.popular ? 'is-popular' : ''}>{p.name}</span>
-                  ))}
-                </div>
               </div>
 
               <div className="lp-matrix-table">
@@ -182,11 +178,7 @@ export default function PricingGrid() {
 
                     <div className="lp-matrix-values-group">
                       {row.values.map((val, idx) => (
-                        <div
-                          key={idx}
-                          className={`lp-matrix-val-cell ${plans[idx].popular ? 'is-popular' : ''}`}
-                          data-plan={plans[idx].name}
-                        >
+                        <div key={idx} className="lp-matrix-val-cell">
                           {renderCellContent(val)}
                         </div>
                       ))}

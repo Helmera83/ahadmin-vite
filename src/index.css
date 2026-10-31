@@ -1163,40 +1163,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   About Section & Verified Badges
-   ========================================================================== */
-.lp-about {
-  background: var(--mint);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-
-.lp-about-grid {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3.5rem;
-}
-
-.lp-about-card-hero {
-  flex: 1 1 34rem;
-  max-width: 38rem;
-  color: #ffffff;
-}
-
-.lp-about-proof-col {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-}
-
-.lp-about-proof-col .lp-hero-proof {
-  margin: 0;
-  width: 100%;
-  max-width: 28rem;
-}
-
 /* Responsive adjustment for tablets & mobile */
 @media (max-width: 960px) {
   .lp-about-grid {
@@ -1233,86 +1199,6 @@ body {
   font-size: 0.98rem;
   margin-top: 1rem;
 }
-
-/* ==========================================================================
-   About Section - Background Image Variant
-   ========================================================================== */
-.lp-about.lp-about-bg {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  padding: 6.5rem 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  background-color: var(--navy);
-}
-
-.lp-about.lp-about-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(105deg,
-      rgba(16, 34, 63, 0.94) 0%,
-      rgba(16, 34, 63, 0.82) 48%,
-      rgba(16, 34, 63, 0.38) 100%),
-    url('/office2.jpg');
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
-}
-
-.lp-about-card-hero {
-  max-width: 38rem;
-  color: #ffffff;
-}
-
-.lp-about-card-hero .lp-about-eyebrow {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #7fe0dd;
-  display: inline-block;
-  margin-bottom: 0.85rem;
-}
-
-.lp-about-card-hero h2 {
-  color: #ffffff;
-  font-size: clamp(2rem, 3.6vw, 2.75rem);
-  line-height: 1.15;
-  margin: 0 0 1.25rem;
-}
-
-.lp-about-card-hero .sub {
-  color: #d6e2ef;
-  font-size: 1.12rem;
-  line-height: 1.65;
-  margin: 0 0 1rem;
-}
-
-.lp-about-card-hero .lp-about-details {
-  color: #a9bece;
-  font-size: 0.98rem;
-  line-height: 1.65;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .lp-about.lp-about-bg {
-    padding: 4.5rem 0;
-  }
-
-  .lp-about.lp-about-bg::before {
-    background-image:
-      linear-gradient(to bottom,
-        rgba(16, 34, 63, 0.94) 0%,
-        rgba(16, 34, 63, 0.88) 100%),
-      url('/office2.jpg');
-  }
-}
-
 
 /* ==========================================================================
    Closing CTA
@@ -1566,10 +1452,7 @@ body {
     gap: 1.5rem;
   }
 
-  .lp-about-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
+
 
   .lp-close {
     padding: 4rem 0;
@@ -2380,5 +2263,224 @@ html {
   .lp-nav {
     width: auto;
     justify-content: flex-end;
+  }
+}
+/* ==========================================================================
+   B2B Trust & Stack Strip
+   ========================================================================== */
+.lp-trust-bar {
+  background: #ffffff;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.75rem 0;
+}
+
+.lp-trust-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.lp-trust-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.lp-trust-label span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--teal-d);
+  letter-spacing: 0.06em;
+}
+
+.lp-trust-label strong {
+  font-size: 0.96rem;
+  color: var(--navy);
+}
+
+.lp-trust-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.lp-trust-pill {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.lp-trust-creds {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.lp-trust-creds img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(20%);
+  opacity: 0.9;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.lp-trust-creds img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Hero De-risking Guarantees
+   ========================================================================== */
+.lp-hero-guarantees {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lp-guarantee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  color: #c9d6e6;
+}
+
+.lp-guarantee-item svg {
+  color: #54d89a;
+  flex-shrink: 0;
+}
+
+/* How It Works Action Button */
+.lp-how-action {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* Comparison Head on Desktop */
+.lp-matrix-head {
+  display: grid;
+  grid-template-columns: 1.2fr 2.8fr;
+  align-items: center;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--rule);
+  font-size: 0.92rem;
+}
+
+.lp-matrix-head-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.lp-matrix-head-plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.lp-matrix-head-plans span.is-popular {
+  color: var(--teal-d);
+}
+
+@media (max-width: 960px) {
+  .lp-matrix-head {
+    display: none;
+  }
+}
+/* ==========================================================================
+   TrustBar LogoLoop Alignment
+   ========================================================================== */
+/* ==========================================================================
+   TrustBar Full LogoLoop Layout
+   ========================================================================== */
+.lp-trust-bar {
+  background: #ffffff;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.35rem 0;
+  overflow: hidden;
+}
+
+.lp-trust-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.lp-trust-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.lp-trust-label span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--teal-d);
+  letter-spacing: 0.06em;
+}
+
+.lp-trust-label strong {
+  font-size: 0.95rem;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.lp-trust-loop-container {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.lp-trust-loop-container .logoloop__label {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.lp-trust-loop-container .logoloop__node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .lp-trust-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .lp-trust-loop-container {
+    width: 100%;
   }
 }
